@@ -1,36 +1,48 @@
-<html>
 <?php
 
-function start_page($title)
+if (isset ($_POST['op1']) AND isset($_POST['op2']) AND isset($_POST['op']))
 {
-    echo '<!DOCTYPE html><html lang="fr"><head><title>' . PHP_EOL . $title . '</title><br/></head><body>' . PHP_EOL . '<hr/><strong>TEST</strong><br/><hr/>';
-};
+    $op1=$_POST['op1'];
+    $op2=$_POST['op2'];
+    $op=$_POST['op'];
+    $action = $_POST['action'];
+    echo $action;
 
-function end_page()
-{
-    echo PHP_EOL. '</body><html/> ';
-};
+    if($op1 != NULL AND $op2 != NULL)
+    {
+        if($op == "/" AND $op2 == 0)
+        {
+            echo 'division par 0';
+        }
+        else {
+            if ($op == '+')
+            {
+                $resultat = $op1 + $op2;
+                echo $resultat;
+            }
+            if ($op == "-")
+            {
+                $resultat = $op1 - $op2;
+                echo $resultat;
+            }
+            if ($op == "*")
+            {
+                $resultat = $op1 * $op2;
+                echo $resultat;
+            }
+            if ($op == "/") {
+                $resultat = $op1 / $op2;
+                echo $resultat;
+            }
+        }
 
-start_page('calcule');
-end_page();
-
-$op1=$_POST['op1'];
-$op2=$_POST['op2'];
-$op=$_POST['op'];
-
-
-if('*'==$op)
-{
-    echo $op1*$op2;
+    }
+    else
+    {
+        echo 'non';
+    }
 }
-elseif('+'==$op)
-{
-    echo $op1+$op2;
-}
-else
-{
-    echo'<br/><strong>opérateur'.$op.'non géré</strong>';
-}
+?>;
 
-?>
-</html>
+
+
